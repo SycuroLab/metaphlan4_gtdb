@@ -1,7 +1,18 @@
-
+# Create the metaphlan4 conda environment.
 conda create --name metaphlan4_env
+
+# Activate the metaphlan4 conda environment.
 conda activate metaphlan4_env
+
+# Install python version 3.7
 conda install -c conda-forge python==3.7
+
+# Install metaphlan version 4.0.6
 pip install metaphlan==4.0.6
 
+# Install bowtie2.
+conda install -c bioconda bowtie2
+
+# Export the metaphlan4 conda environment to file metaphlan4_env.yaml.
+conda env export > utils/envs/metaphlan4_env.yaml
 
