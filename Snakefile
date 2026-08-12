@@ -42,9 +42,9 @@ rule metaphlan:
     params: 
         metaphlan_database = config["metaphlan_database"],
 	threads = config["threads"]	
-    conda: "metaphlan4_env"
+    conda: "metaphlan4"
     shell:
-            "metaphlan -t rel_ab_w_read_stats --unclassified_estimation {input.reads} --input_type fastq "
+            "metaphlan -t rel_ab_w_read_stats --unclassified_estimation {input.reads} --input_type fastq --offline "
             "--bowtie2db {params.metaphlan_database} --bowtie2out {output.bt} --nproc {params.threads} -o {output.pr}"
 
 # sgb_to_gtdb_profile.py is a python script that is available with metaphlan4
@@ -53,11 +53,11 @@ rule metaphlan:
 #         sg=config["output_dir"] + "/metaphlan/{sample}_profile.txt"
 #    output:
 #         gtdb=config["output_dir"] + "/metaphlan/GTDB/{sample}_profile.txt"
-#    conda: "metaphlan4_env"
+#    conda: "metaphlan4"
 #    shell:
 #            "sgb_to_gtdb_profile.py  -i {input.sg} -o {output.gtdb}"
 
-# sgb_to_gtdb_profile.py is a python script that is available with metaphlan4_env
+# sgb_to_gtdb_profile.py is a python script that is available with metaphlan4
 rule sgb_to_GTDB:
     input:
          sg=config["output_dir"] + "/metaphlan/{sample}_profile.txt",
@@ -66,7 +66,7 @@ rule sgb_to_GTDB:
          gtdb_output_dir=config["output_dir"] + "/metaphlan/GTDB"
     output:
          gtdb=config["output_dir"] + "/metaphlan/GTDB/{sample}_profile.txt"
-    conda: "metaphlan4_env"
+    conda: "metaphlan4"
     shell:
             "python utils/sgb_to_gtdb_profile_abundances.py --metaphlan_SGB_profile_infile {input.sg} --sgb_to_gtdb_tsv_file {params.sgb_to_gtdb_tsv_file} --output_dir {params.gtdb_output_dir}"
 
@@ -81,7 +81,7 @@ rule mergeprofiles:
             o2=config["output_dir"] + "/merged_abundance_table_species.txt",
             o3=config["output_dir"] + "/merged_abundance_table_GTDB.txt",
             o4=config["output_dir"] + "/merged_abundance_table_species_GTDB.txt"
-    conda: "metaphlan4_env"
+    conda: "metaphlan4"
     shell: """
            python utils/merge_metaphlan_profiles_to_tables.py --metaphlan_SGB_profile_dir {params.metaphlan_SGB_profile_dir} --metaphlan_GTDB_profile_dir {params.metaphlan_GTDB_profile_dir} --output_dir {params.output_dir} 
            grep -E "(s__)|(^ID)|(clade_name)|(UNKNOWN)|(UNCLASSIFIED)" {output.o1} | grep -v "t__"  > {output.o2}
@@ -93,7 +93,7 @@ rule mergeprofiles:
 #    output: o1=config["output_dir"] + "/merged_abundance_table.txt",
 #            o2=config["output_dir"] + "/merged_abundance_table_species.txt"
 #    params: profiles=config["output_dir"]+"/metaphlan/*_profile.txt"
-#    conda: "metaphlan4_env"
+#    conda: "metaphlan4"
 #    shell: """
 #           python utils/merge_metaphlan_tables.py {params.profiles} > {output.o1}
 #           grep -E "(s__)|(^ID)|(clade_name)|(UNKNOWN)|(UNCLASSIFIED)" {output.o1} | grep -v "t__"  > {output.o2}
@@ -105,7 +105,7 @@ rule mergeprofiles:
 #    output: o1=config["output_dir"] + "/merged_abundance_table_relab.txt",
 #            o2=config["output_dir"] + "/merged_abundance_table_species_relab.txt"
 #    params: profiles=config["output_dir"]+"/metaphlan/*_profile.txt"
-#    conda: "metaphlan4_env"
+#    conda: "metaphlan4"
 #    shell: """
 #           python utils/merge_metaphlan_tables_relab.py {params.profiles} > {output.o1}
 #           grep -E "(s__)|(^ID)|(clade_name)|(UNKNOWN)|(UNCLASSIFIED)" {output.o1} | grep -v "t__"  > {output.o2}
@@ -117,7 +117,7 @@ rule mergeprofiles:
 #    output: o1=config["output_dir"] + "/merged_abundance_table_GTDB.txt",
 #            o2=config["output_dir"] + "/merged_abundance_table_species_GTDB.txt"
 #    params: profiles=config["output_dir"]+"/metaphlan/GTDB/*_profile.txt"
-#    conda: "metaphlan4_env"
+#    conda: "metaphlan4"
 #    shell: """
 #           python utils/merge_metaphlan_tables.py {params.profiles} > {output.o1}
 #           grep -E "(s__)|(^ID)|(clade_name)|(UNKNOWN)|(UNCLASSIFIED)" {output.o1} | grep -v "t__"  > {output.o2}
@@ -129,7 +129,7 @@ rule mergeprofiles:
 #    output: o1=config["output_dir"] + "/merged_abundance_table_GTDB_relab.txt",
 #            o2=config["output_dir"] + "/merged_abundance_table_species_GTDB_relab.txt"
 #    params: profiles=config["output_dir"]+"/metaphlan/GTDB/*_profile.txt"
-#    conda: "metaphlan4_env"
+#    conda: "metaphlan4"
 #    shell: """
 #           python utils/merge_metaphlan_tables_relab.py {params.profiles} > {output.o1}
 #           grep -E "(s__)|(^ID)|(clade_name)|(UNKNOWN)|(UNCLASSIFIED)" {output.o1} | grep -v "t__"  > {output.o2}

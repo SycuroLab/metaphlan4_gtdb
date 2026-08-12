@@ -2,21 +2,22 @@
 # * Parameters for metprofile pipeline *
 # **************************************
 
-list_files: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/kghs_metagenomics_2023/metaphlan4/utils/ref_list_merged_files_controls.txt"
-
+list_files: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/metaphlan4_gtdb/sample_list.txt"
 
 # Path to sequences
-path: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/kghs_metagenomics_2023/metqc/output/bmtagger/"
+#path: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/fixed_sra_fastq_files/"
+
+path: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/sortmerna_fastq_files/"
 
 #output_dir: "output"
-output_dir: "output_with_controls"
+output_dir: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/metaphlan4_results_files"
 
 
 # Metaphlan bowtie2 database.
-metaphlan_database: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.0.5"
+metaphlan_database: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.1"
 
 # Metaphlan database SGB ID to GTDB taxonomy file.
-sgb_to_gtdb_tsv_file: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.0.5/mpa_vOct22_CHOCOPhlAnSGB_202212_SGB2GTDB.tsv"
+sgb_to_gtdb_tsv_file: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.1/mpa_vJun23_CHOCOPhlAnSGB_202307_SGB2GTDB.tsv"
 
 # Nthreads metaphlan can use
 threads: 8
@@ -25,9 +26,13 @@ threads: 8
 paired: TRUE
 
 # If paired-end reads, suffix for forward reads
-for: "_bmtagged_1.fastq"
+#for: "_R1.fastq"
+for: "_non_rRNA_fwd.fq"
+
 # If paired-end reads, suffix for reverse reads
-rev: "_bmtagged_2.fastq"
+#rev: "_R2.fastq"
+rev: "_non_rRNA_rev.fq"
 
 # If unpaired reads, suffix for reads
 suff: "_bmt_merged_ELC_trimmed_filtered.fastq"
+
