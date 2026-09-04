@@ -2,22 +2,26 @@
 # * Parameters for metprofile pipeline *
 # **************************************
 
-list_files: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/metaphlan4_gtdb/sample_list.txt"
+list_files: "/home/kevin.muirhead/metaphlan4_gtdb/list_files.txt" 
+
+#list_files: "/home/kevin.muirhead/metaphlan4_gtdb/list_3_files.txt"
 
 # Path to sequences
-#path: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/fixed_sra_fastq_files/"
-
-path: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/sortmerna_fastq_files/"
+path: "/bulk/sycuro_bulk/ayman/PD_vancouver_92/metqc/output/bmtagger/"
 
 #output_dir: "output"
-output_dir: "/bulk/sycuro_bulk/lsycuro_labshare/kevin/VMRC/metatranscriptome/metaphlan4_results_files"
+output_dir: "/bulk/sycuro_bulk/shared_projects/parkinsons/Vancouver_PD92/metaphlan4_2026-09-01"
 
 
-# Metaphlan bowtie2 database.
-metaphlan_database: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.1"
+# Metaphlan bowtie2 database directory path.
+metaphlan_database: "/bulk/IMCshared_bulk/shared/dbs/mpa_vJun23_CHOCOPhlAnSGB_202403"
+
+# The Metaphlan bowtie2 database index.
+database_index: "mpa_vJun23_CHOCOPhlAnSGB_202403"
 
 # Metaphlan database SGB ID to GTDB taxonomy file.
-sgb_to_gtdb_tsv_file: "/bulk/IMCshared_bulk/shared/dbs/metaphlan4.1/mpa_vJun23_CHOCOPhlAnSGB_202307_SGB2GTDB.tsv"
+sgb_to_gtdb_tsv_file: "/bulk/IMCshared_bulk/shared/dbs/mpa_vJun23_CHOCOPhlAnSGB_202403/mpa_vJun23_CHOCOPhlAnSGB_202403_SGB2GTDB.tsv"
+
 
 # Nthreads metaphlan can use
 threads: 8
@@ -27,11 +31,11 @@ paired: TRUE
 
 # If paired-end reads, suffix for forward reads
 #for: "_R1.fastq"
-for: "_non_rRNA_fwd.fq"
+for: "_bmtagged_1.fastq"
 
 # If paired-end reads, suffix for reverse reads
 #rev: "_R2.fastq"
-rev: "_non_rRNA_rev.fq"
+rev: "_bmtagged_2.fastq"
 
 # If unpaired reads, suffix for reads
 suff: "_bmt_merged_ELC_trimmed_filtered.fastq"

@@ -31,12 +31,12 @@ sgb_to_gtdb_tsv_file = results.sgb_to_gtdb_tsv_file
 output_dir = results.output_dir
 
 if(metaphlan_SGB_profile_infile == None):
-	print('\n')
-	print('error: please use the --metaphlan_SGB_profile_infile option to specify the input metaphlan SGB profile file directory as input')
-	print('metaphlan_SGB_profile_infile =' + ' ' + str(metaphlan_SGB_profile_infile))
-	print('\n')
-	parser.print_help()
-	sys.exit(1)
+    print('\n')
+    print('error: please use the --metaphlan_SGB_profile_infile option to specify the input metaphlan SGB profile file directory as input')
+    print('metaphlan_SGB_profile_infile =' + ' ' + str(metaphlan_SGB_profile_infile))
+    print('\n')
+    parser.print_help()
+    sys.exit(1)
 if(sgb_to_gtdb_tsv_file == None):
     print('\n')
     print('error: please use the --sgb_to_gtdb_tsv_file option to specify the input metaphlan SGB to GTDB taxonomy file as input')
@@ -189,7 +189,7 @@ clade_names_set_sorted = alphanumeric_sort(set(clade_names_list))
 del clade_names_list
 
 csv_writer_file_handle = open(os.path.join(output_dir, filename + ".txt"), "w+")
-csv_writer = csv.writer(csv_writer_file_handle, delimiter='\t', quotechar='', quoting=csv.QUOTE_NONE)
+csv_writer = csv.writer(csv_writer_file_handle, delimiter='\t', quotechar='"', quoting=csv.QUOTE_NONE)
 
 # Write the metaphlan database comment entry.
 csv_writer.writerow([comments_list[0]])
