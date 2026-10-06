@@ -1,17 +1,14 @@
-# **************************************
-# * Parameters for metprofile pipeline *
-# **************************************
+# ************************************************
+# * Parameters for the metaphlan_v4.1.1 pipeline *
+# ************************************************
 
-list_files: "/home/kevin.muirhead/metaphlan4_gtdb/list_files.txt" 
-
-#list_files: "/home/kevin.muirhead/metaphlan4_gtdb/list_3_files.txt"
+list_files: "/home/kevin.muirhead/metaphlan4_snakemake/metaphlan4_gtdb/list_files.txt"
+#list_files: "/home/kevin.muirhead/metaphlan4_snakemake/metaphlan4_gtdb/list_3_files.txt"
 
 # Path to sequences
-path: "/bulk/sycuro_bulk/ayman/PD_vancouver_92/metqc/output/bmtagger/"
+path: "/bulk/sycuro_bulk/shared_projects/parkinsons/Vancouver_PD92/metqc_v2_output_2026-10-03/bmtagger/"
 
-#output_dir: "output"
-output_dir: "/bulk/sycuro_bulk/shared_projects/parkinsons/Vancouver_PD92/metaphlan4_2026-09-01"
-
+output_dir: "/bulk/sycuro_bulk/shared_projects/parkinsons/Vancouver_PD92/metaphlan4_2026-10-04"
 
 # Metaphlan bowtie2 database directory path.
 metaphlan_database: "/bulk/IMCshared_bulk/shared/dbs/mpa_vJun23_CHOCOPhlAnSGB_202403"

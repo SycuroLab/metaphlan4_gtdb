@@ -4,14 +4,26 @@ conda create --name metaphlan4_env
 # Activate the metaphlan4 conda environment.
 conda activate metaphlan4_env
 
-# Install python version 3.7
-conda install -c conda-forge python==3.7
+# Install python version 3.14.7.
+conda install -c conda-forge python=3.14.7 -y
 
-# Install metaphlan version 4.0.6
-pip install metaphlan==4.0.6
+# Install metaphlan version 4.1.1.
+pip install metaphlan==4.1.1
 
-# Install bowtie2.
-conda install -c bioconda bowtie2
+# Install bowtie2 version 2.5.5.
+conda install -c bioconda bowtie2=2.5.5 -y
+
+# Install blast version 2.17.0. 
+conda install -c bioconda blast=2.17.0 -y
+
+# Install muscle version 5.3.
+conda install -c bioconda muscle=5.3 -y
+ 
+# Install raxml version 8.2.13.
+conda install -c bioconda raxml=8.2.13 -y
+
+# Install samtools version 1.21..
+conda install -c bioconda samtools=1.21 -y
 
 # Export the metaphlan4 conda environment to file metaphlan4_env.yaml.
 conda env export > utils/envs/metaphlan4_env.yaml
